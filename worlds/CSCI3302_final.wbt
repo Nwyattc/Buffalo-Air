@@ -1,0 +1,98 @@
+#VRML_SIM R2020b utf8
+WorldInfo {
+  info [
+    "CSCI 3302 Lab 5: Path Planning"
+    "Prof. Brad Hayes, University of Colorado Boulder, Fall 2020"
+  ]
+  title "E-Puck"
+  coordinateSystem "NUE"
+  lineScale 0.04
+}
+Viewpoint {
+  orientation -0.0013678810721263282 0.9680338599017226 0.2508158188494983 3.1310339663575575
+  position -0.3757617319254085 6.998728037026351 -13.286159974406987
+}
+TexturedBackground {
+}
+TexturedBackgroundLight {
+}
+Mavic2Pro {
+  translation -1.58 0.099999 0.62
+  rotation 1 0 0 -1.5707953071795862
+  controller "my_mavic_control"
+  supervisor TRUE
+  bodySlot [
+    Solid {
+      children [
+        GPS {
+        }
+      ]
+      boundingObject Box {
+        size 0.1 0.1 0.1
+      }
+      physics Physics {
+        mass 0.0001
+      }
+    }
+    Solid {
+      children [
+        InertialUnit {
+        }
+      ]
+      boundingObject Box {
+        size 0.1 0.1 0.1
+      }
+      physics Physics {
+        mass 0.0001
+      }
+    }
+    Solid {
+      children [
+        Gyro {
+        }
+      ]
+      boundingObject Box {
+        size 0.1 0.1 0.1
+      }
+      physics Physics {
+        mass 0.0001
+      }
+    }
+  ]
+}
+RectangleArena {
+  translation 0.5 0 0.5
+  floorSize 10 10
+  floorTileSize 1 1
+  floorAppearance PBRAppearance {
+    baseColorMap ImageTexture {
+      url [
+        "texture/varnished_pine_base_color.jpg"
+      ]
+    }
+    roughness 0.2
+    metalness 0
+  }
+  wallHeight 0.05
+}
+DEF Goal Solid {
+  translation 2.5 0.0399361 -3
+  rotation 0 1 0 -5.307179586466759e-06
+  scale 0.5 0.5 0.5
+  children [
+    Shape {
+      appearance PBRAppearance {
+        baseColorMap ImageTexture {
+          url [
+            "texture/goal_mark.png"
+          ]
+          filtering 0
+        }
+        metalness 0
+      }
+      geometry Plane {
+      }
+    }
+  ]
+  name "Goal"
+}
